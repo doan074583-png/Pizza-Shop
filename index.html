@@ -1,105 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🍕 Pizza Shop</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #fff1d6;
-      text-align: center;
-      padding: 20px;
-    }
-
-    h1 {
-      color: #e85d04;
-      font-size: 40px;
-    }
-
-    .customer {
-      background: white;
-      padding: 15px;
-      border-radius: 20px;
-      max-width: 500px;
-      margin: auto;
-    }
-
-    .face {
-      font-size: 60px;
-    }
-
-    .pizza {
-      width: 230px;
-      height: 230px;
-      background: #ffd166;
-      border: 15px solid #d97732;
-      border-radius: 50%;
-      margin: 25px auto;
-      position: relative;
-    }
-
-    button {
-      padding: 12px;
-      margin: 5px;
-      border: none;
-      border-radius: 15px;
-      font-size: 16px;
-    }
-
-    .make {
-      background: #e85d04;
-      color: white;
-      font-size: 20px;
-      padding: 15px 25px;
-    }
-  </style>
+  <meta name="theme-color" content="#ff9b7b">
+  <title>Sunny Slice Pizza Shop</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <main class="game-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><div><strong>Sunny Slice</strong><small>Pizza Kitchen</small></div></div>
+      <div class="stats" aria-label="Game stats">
+        <div class="stat"><span class="stat-label">DAY</span><strong id="day">1</strong></div>
+        <div class="stat money-stat"><span class="stat-label">MONEY</span><strong><span class="coin-icon">$</span><span id="money">0</span></strong></div>
+        <div class="stat"><span class="stat-label">SCORE</span><strong id="score">0</strong></div>
+      </div>
+    </header>
 
-<h1>🍕 Pizza Shop</h1>
+    <section class="customer-card panel">
+      <div class="customer-avatar" aria-hidden="true"><span class="hair"></span><span class="face"><b></b><b></b><i></i></span></div>
+      <div class="order-copy"><p class="eyebrow">CUSTOMER ORDER</p><h1 id="customerName">Mia is hungry!</h1><p id="orderText">Make a classic cheese pizza</p><div id="orderChips" class="order-chips"></div></div>
+      <div id="mood" class="mood happy">READY!</div>
+    </section>
 
-<div class="customer">
-  <div class="face">👩🏻</div>
-  <h2>Customer</h2>
-  <p>I want a cheese pizza! 🍕</p>
-</div>
-
-<div id="pizza" class="pizza"></div>
-
-<h2>Choose toppings</h2>
-
-<button onclick="addTopping('🍅')">🍅 Tomato</button>
-<button onclick="addTopping('🧀')">🧀 Cheese</button>
-<button onclick="addTopping('🍄')">🍄 Mushroom</button>
-<button onclick="addTopping('🥓')">🥓 Bacon</button>
-
-<br>
-
-<button class="make" onclick="makePizza()">🍕 MAKE PIZZA!</button>
-
-<h2 id="message"></h2>
-
-<script>
-function addTopping(item) {
-  const pizza = document.getElementById("pizza");
-
-  const topping = document.createElement("span");
-  topping.textContent = item;
-  topping.style.position = "absolute";
-  topping.style.fontSize = "35px";
-  topping.style.left = Math.random() * 170 + 20 + "px";
-  topping.style.top = Math.random() * 170 + 20 + "px";
-
-  pizza.appendChild(topping);
-}
-
-function makePizza() {
-  document.getElementById("message").textContent =
-    "🎉 YUMMY! Customer loved your pizza! 🪙 +10 coins!";
-}
-</script>
-
+    <section class="kitchen panel">
+      <div class="kitchen-heading"><div><p class="eyebrow">TODAY'S KITCHEN</p><h2>Build the perfect slice</h2></div><p class="hint">Tap a tray, then tap the dough to place toppings.</p></div>
+      <div class="worktop">
+        <aside class="ingredient-bank" aria-label="Ingredient trays">
+          <div class="bank-label">INGREDIENT TRAYS</div>
+          <div id="ingredientGrid" class="ingredient-grid"></div>
+        </aside>
+        <div class="pizza-station">
+          <div class="station-label"><span>YOUR PIZZA</span><small id="placementHint">Choose an ingredient</small></div>
+          <div id="pizza" class="pizza" role="img" aria-label="Pizza dough. Choose an ingredient, then tap the dough.">
+            <div class="sauce-layer"></div><div id="toppings" class="toppings"></div>
+          </div>
+          <div class="pizza-actions"><button id="clearBtn" class="button secondary" type="button">CLEAR PIZZA</button><button id="bakeBtn" class="button primary" type="button">BAKE PIZZA</button></div>
+        </div>
+      </div>
+      <div id="message" class="message" role="status" aria-live="polite">Your dough is ready. Let's make something delicious!</div>
+    </section>
+    <footer>Fresh ingredients • Big smiles • Made with care</footer>
+  </main>
+  <script src="script.js"></script>
 </body>
 </html>
