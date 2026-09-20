@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🍕 Pizza Shop</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff1d6;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #e85d04;
+      font-size: 40px;
+    }
+
+    .customer {
+      background: white;
+      padding: 15px;
+      border-radius: 20px;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .face {
+      font-size: 60px;
+    }
+
+    .pizza {
+      width: 230px;
+      height: 230px;
+      background: #ffd166;
+      border: 15px solid #d97732;
+      border-radius: 50%;
+      margin: 25px auto;
+      position: relative;
+    }
+
+    button {
+      padding: 12px;
+      margin: 5px;
+      border: none;
+      border-radius: 15px;
+      font-size: 16px;
+    }
+
+    .make {
+      background: #e85d04;
+      color: white;
+      font-size: 20px;
+      padding: 15px 25px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>🍕 Pizza Shop</h1>
+
+<div class="customer">
+  <div class="face">👩🏻</div>
+  <h2>Customer</h2>
+  <p>I want a cheese pizza! 🍕</p>
+</div>
+
+<div id="pizza" class="pizza"></div>
+
+<h2>Choose toppings</h2>
+
+<button onclick="addTopping('🍅')">🍅 Tomato</button>
+<button onclick="addTopping('🧀')">🧀 Cheese</button>
+<button onclick="addTopping('🍄')">🍄 Mushroom</button>
+<button onclick="addTopping('🥓')">🥓 Bacon</button>
+
+<br>
+
+<button class="make" onclick="makePizza()">🍕 MAKE PIZZA!</button>
+
+<h2 id="message"></h2>
+
+<script>
+function addTopping(item) {
+  const pizza = document.getElementById("pizza");
+
+  const topping = document.createElement("span");
+  topping.textContent = item;
+  topping.style.position = "absolute";
+  topping.style.fontSize = "35px";
+  topping.style.left = Math.random() * 170 + 20 + "px";
+  topping.style.top = Math.random() * 170 + 20 + "px";
+
+  pizza.appendChild(topping);
+}
+
+function makePizza() {
+  document.getElementById("message").textContent =
+    "🎉 YUMMY! Customer loved your pizza! 🪙 +10 coins!";
+}
+</script>
+
+</body>
+</html>
